@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class Home extends Controller
 {
     /**
@@ -14,6 +15,6 @@ class Home extends Controller
      */
     public function __invoke(Request $request)
     {
-        //candidate test
+        return view('public.home');
     }
 }
