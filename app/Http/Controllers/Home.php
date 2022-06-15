@@ -14,6 +14,6 @@ class Home extends Controller
      */
     public function __invoke(Request $request)
     {
-        //
+        //candidate test
     }
 }
