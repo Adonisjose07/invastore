@@ -47,7 +47,6 @@
         </div>
 
         @include('public.footer')
-        @include('public.modals')
         @include('public.foot')
         <!-- extra foot options -->
     </body>

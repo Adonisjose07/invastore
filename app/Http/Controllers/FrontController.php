@@ -40,6 +40,30 @@ class FrontController extends Controller
         ));
     }
 
+    public function aboutUs(Request $request){
+        $credential = Auth::user();
+        $cart = ($credential != null) ? $credential->user->cart : null;
+        $categories = ProductCategories::all();
+
+        return view('public.about-us')->with([
+            'categories' => $categories,
+            'cart' => $cart
+        ]);
+
+    }
+
+    public function contact(Request $request){
+        $credential = Auth::user();
+        $cart = ($credential != null) ? $credential->user->cart : null;
+        $categories = ProductCategories::all();
+
+        return view('public.contact')->with([
+            'categories' => $categories,
+            'cart' => $cart
+        ]);
+
+    }
+
     public function quickAddToCart(Request $request, Product $product){
         $credential = Auth::user();
         if (null !== $credential && null !== $product){
@@ -349,5 +373,49 @@ class FrontController extends Controller
             ];
 
             return response()->json($res);
+    }
+
+    public function shopCategoryProduct(Request $request, $category_slug, $product_slug){
+        $category = ProductCategories::where('slug', '=', $category_slug)->get()->first();
+        $product = Product::where('slug', '=', $product_slug)->get()->first();
+        $relatedProducts = [];
+
+        if($category && $product){
+            $credential = Auth::user();
+            $cart = ($credential != null) ? $credential->user->cart : null;
+            $categories = ProductCategories::all();
+            
+            if($credential){
+                foreach($credential->user->cart->items as $item){
+                    if($item->product_id == $product->id){
+                        $product->isAddedToCart = true;
+                        $product->qtyAddedToCart = $item->quantity;
+                    }
+                }
+            }
+
+            $relatedProducts = Product::where([['category_id', '=', $product->category_id], ['id', '<>', $product->id]])->get();
+            
+            if($credential && count($relatedProducts)){
+                foreach($relatedProducts as $rProduct){
+                    foreach($credential->user->cart->items as $item){
+                        if($item->product_id == $rProduct->id){
+                            $rProduct->isAddedToCart = true;
+                        }
+                    }
+                }
+            }
+
+            return view('public.product-details')->with([
+                'categories' => $categories,
+                'cart' => $cart,
+                'product' => $product, 
+                'category' => $category,
+                'filter_name' => '',
+                'related_products' => $relatedProducts
+            ]);
+        }else{
+            abort(404);
+        }
     }
 }

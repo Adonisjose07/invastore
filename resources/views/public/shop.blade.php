@@ -1,4 +1,3 @@
-        
 @include('public.head')
     <!-- extra head options -->
     </head>
@@ -45,7 +44,7 @@
                                                     <div class="col-lg-6 col-md-6 col-xl-3">
                                                         <div class="product-wrapper mb-30">
                                                             <div class="product-img">
-                                                                <a href="{{url('/shop/product/'.$product->id)}}">
+                                                                <a href="{{url('/shop/'.$product->category->slug.'/'.$product->slug)}}">
                                                                     <img src="{{asset('storage/'.$product->getFeaturedImage())}}" alt="">
                                                                 </a>
                                                                 <!-- <span>hot</span> -->
@@ -65,7 +64,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="product-content">
-                                                                <h4><a href="{{url('/shop/product/1')}}">{{$product->name}} </a></h4>
+                                                                <h4><a href="{{url('/shop/'.$product->category->slug.'/'.$product->slug)}}">{{$product->name}} </a></h4>
                                                                 <span>${{$product->price}}</span>
                                                             </div>
                                                         </div>
@@ -84,7 +83,7 @@
                                                     <div class="col-lg-12 col-xl-6">
                                                         <div class="product-wrapper mb-30 single-product-list product-list-right-pr mb-60">
                                                             <div class="product-img list-img-width">
-                                                                <a href="#">
+                                                                <a href="{{url('/shop/'.$product->category->slug.'/'.$product->slug)}}">
                                                                     <img src="{{asset('storage/'.$product->getFeaturedImage())}}" alt="">
                                                                 </a>
                                                                 <!-- <span>hot</span> -->
@@ -96,7 +95,7 @@
                                                             </div>
                                                             <div class="product-content-list">
                                                                 <div class="product-list-info">
-                                                                    <h4><a href="#">{{$product->name}}</a></h4>
+                                                                    <h4><a href="{{url('/shop/'.$product->category->slug.'/'.$product->slug)}}">{{$product->name}}</a></h4>
                                                                     <span>${{$product->price}}</span>
                                                                     <p>{{$product->category->name}}. </p>
                                                                 </div>
@@ -335,6 +334,16 @@
                 let product_grid_2 = document.querySelector('.product-list-cart a[data-product-id="'+product_id+'"]');
                 if(product_grid_2){
                     product_grid_2.innerText = (action == 'updated' || action == 'create') ? 'cart remove' : 'add to cart';
+                }
+
+                if(action == 'updated'){
+                    $.notify('Product updated', 'success');
+                }
+                if(action == 'create'){
+                    $.notify('Product added to cart', 'success');
+                }
+                if(action == 'delete'){
+                    $.notify('Product deleted from cart');
                 }
                 
             }

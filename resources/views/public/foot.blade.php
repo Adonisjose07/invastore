@@ -17,5 +17,6 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"
 <script src="{{asset('assets/js/ajax-mail.js')}}"></script>
 <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('assets/js/plugins.js')}}"></script>
+<script src="{{asset('assets/js/notify.min.js')}}"></script>
 <script src="{{asset('assets/js/main.js')}}"></script>
     

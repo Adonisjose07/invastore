@@ -21,6 +21,6 @@
                                     </div>
                                 </div>
                             </li>
-                            <li><a href="contact.html">contact</a></li>
+                            <li><a href="{{url('contact')}}">contact</a></li>
                         </ul>
                     </nav>

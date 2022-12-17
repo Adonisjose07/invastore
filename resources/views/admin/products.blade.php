@@ -16,7 +16,6 @@
                         <tr>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>Description</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -39,7 +38,6 @@
                     columns: [
                         {data: 'name', name: 'name'},
                         {data: 'price', name: 'price'},
-                        {data: 'description', name: 'description'},
                         {
                             data: 'action', 
                             name: 'action', 

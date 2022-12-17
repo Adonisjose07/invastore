@@ -7,12 +7,10 @@
                         <h3 class="footer-widget-title">Custom Service</h3>
                         <div class="footer-widget-content">
                             <ul>
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="register.html">My Account</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="register.html">Register</a></li>
-                                <li><a href="#">Support</a></li>
-                                <li><a href="#">Track</a></li>
+                                <li><a href="#">Cart</a></li>
+                                <li><a href="{{url('dashboard')}}">My Account</a></li>
+                                <li><a href="{{url('login')}}">Login</a></li>
+                                <li><a href="{{url('register')}}">Register</a></li>
                             </ul>
                         </div>
                     </div>
@@ -21,12 +19,10 @@
                     <div class="footer-widget mb-40">
                         <h3 class="footer-widget-title">Categories</h3>
                         <div class="footer-widget-content">
-                                <ul>
-                                <li><a href="1adults_cake.html">Adults cake toppers<span>4</span></a></li>
-                                <li><a href="2girls_and_boys.html">Girls and Boys toppers <span>9</span></a></li>
-                                <li><a href="3graduation_party.html">Graduation party <span>5</span> </a></li>
-                                <li><a href="4wedding_cake.html">Wedding Cake toppers <span>3</span></a></li>
-                                <li><a href="5print_pdf.html">Print PDF /Cupcake tops <span>4</span></a></li>
+                            <ul>
+                                @foreach ($categories as $category )
+                                    <li><a href="{{url('/shop' . $category->slug)}}">{{$category->name}}</a></li>    
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -53,7 +49,7 @@
                     <div class="copyright">
                         <p>
                             Copyright ©
-                            <a href="index.html">KHARYGOART</a> 2022 . All Right Reserved.
+                            <a href="{{url('/')}}">KHARYGOART</a> 2022 . All Right Reserved.
                         </p>
                     </div>
                 </div>

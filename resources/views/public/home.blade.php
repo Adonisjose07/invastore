@@ -10,7 +10,6 @@
         @include('public.home_product_area')
         @include('public.home_banner_area')
         @include('public.home_testimonial_area')
-        
 
         @include('public.footer_home')
         @include('public.modals')
@@ -31,9 +30,11 @@
                                 switch(res.action){
                                     case 'create':
                                         e.target.className = 'icofont icofont-shopping-cart';
+                                        $.notify('Product added to cart', 'success');
                                         break;
                                     case 'delete':
                                         e.target.className = 'pe-7s-cart';
+                                        $.notify('Product deleted from cart');
                                         break;
                                     case 'redirect':
                                         window.location = "{{url('login')}}"

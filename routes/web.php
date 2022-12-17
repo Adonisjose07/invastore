@@ -25,12 +25,11 @@ Route::post('/update-minicart', [FrontController::class, 'updateMinicart']);
 Route::post('/delete-minicart-item/{item}', [FrontController::class, 'deleteMiniCartItem']);
 Route::get('/shop', [FrontController::class, 'shop'])->name('shop');
 Route::get('/shop/{slug}', [FrontController::class, 'shopCategory'])->name('shop.category');
+Route::get('/shop/{category_slug}/{product_slug}', [FrontController::class, 'shopCategoryProduct']);
 Route::post('/quick-view/{product}', [FrontController::class, 'quickView']);
 
-Route::get('/about-us', function () {
-    $categories = ProductCategories::all();
-    return view('public.bio')->with(array('categories' => $categories));
-});
+Route::get('/about-us', [FrontController::class, 'aboutUs']);
+Route::get('/contact', [FrontController::class, 'contact']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

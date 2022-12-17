@@ -6,7 +6,7 @@
                 <div class="custom-col-two-5 custom-col-style-4" data-product-id="{{$product->id}}">
                     <div class="product-wrapper mb-65">
                         <div class="product-img-hanicraft">
-                            <a href="#">
+                            <a href="{{url('/shop/'.$product->category->slug.'/'.$product->slug)}}">
                                 <img src="{{asset('storage/'.$product->gallery()->where('featured', '=', 1)->get()[0]->url)}}" alt="">
                             </a>
                             <div class="hanicraft-action-position">
