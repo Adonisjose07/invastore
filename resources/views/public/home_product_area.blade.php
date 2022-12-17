@@ -2,34 +2,33 @@
 <div class="product-style-area wrapper-padding-2">
     <div class="container-fluid">
         <div class="coustom-row-4">
-            <div class="custom-col-two-5 custom-col-style-4">
-                <div class="product-wrapper mb-65">
-                    <div class="product-img-hanicraft">
-                        <a href="#">
-                            <img src="assets/img/product/handicraft/1.jpg" alt="">
-                        </a>
-                        <div class="hanicraft-action-position">
-                            <div class="hanicraft-action">
-                                <a class="action-cart" title="Add To Cart" href="#">
-                                    <i class="pe-7s-cart"></i>
-                                </a>
-                                <a class="action-like" title="Wishlist" href="#">
-                                    <i class="pe-7s-like"></i>
-                                </a>
-                                <a class="action-repeat" title="Compare" href="#" data-toggle="modal" data-target="#exampleCompare" >
-                                    <i class="pe-7s-repeat"></i>
-                                </a>
-                            </div> 
+            @foreach ($products as $product)
+                <div class="custom-col-two-5 custom-col-style-4" data-product-id="{{$product->id}}">
+                    <div class="product-wrapper mb-65">
+                        <div class="product-img-hanicraft">
+                            <a href="#">
+                                <img src="{{asset('storage/'.$product->gallery()->where('featured', '=', 1)->get()[0]->url)}}" alt="">
+                            </a>
+                            <div class="hanicraft-action-position">
+                                <div class="hanicraft-action">
+                                    <a class="action-cart" title="Add To Cart" href="#">
+                                        <i data-quick-add-to-cart data-product-id="{{$product->id}}" class="{{(isset($product->isAddedToCart)) ? 'icofont icofont-shopping-cart' : 'pe-7s-cart'}}"></i>
+                                    </a>
+                                    <a class="action-like" title="Wishlist" href="#">
+                                        <i class="pe-7s-like"></i>
+                                    </a>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="product-content-hanicraft">
+                            <h5>${{$product->price}}</h5>
+                            <h4><a href="product-details.html">{{$product->name}}</a></h4>
+                            <span>{{$product->category->name}}</span>
                         </div>
                     </div>
-                    <div class="product-content-hanicraft">
-                        <h5>$40.33</h5>
-                        <h4><a href="product-details.html">Trucker Accent Chair</a></h4>
-                        <span>Buskat</span>
-                    </div>
                 </div>
-            </div>
-            <div class="custom-col-two-5 custom-col-style-4">
+            @endforeach
+            <!-- <div class="custom-col-two-5 custom-col-style-4">
                 <div class="product-wrapper mb-65">
                     <div class="product-img-hanicraft">
                         <a href="#">
@@ -277,7 +276,7 @@
                         <span>Buskat</span>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

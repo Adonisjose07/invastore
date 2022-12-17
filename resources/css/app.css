@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import '~bootstrap/dist/css/bootstrap.css';
+@import './custom.css';
+
+.inva-nav-link, .inva-nav-link:hover, .link-no-decoration, .link-no-decoration:hover{
+    text-decoration: none !important;
+}
+.font-bold {
+    font-weight: bold;
+}
+
+#svgMainPhoto, #imgMainPhoto{
+    width:200px;
+    height: 200px;
+    overflow:hidden;
+    object-fit: contain;
+}
+#galleryThumbs, .uploadedGallery{
+    width: 100%;
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+}
+.thumbContainer{
+    
+}
+.imgThumb{
+    width:120px;
+    height:120px;
+    object-fit: contain;
+}
+.hidden{
+    display: none;
+}
+
+
+
+/* @import "~datatables.net-bs4/css/dataTables.bootstrap4.css"; */
+/* @import "~datatables.net-buttons-bs4/css/buttons.bootstrap4.css"; */
+

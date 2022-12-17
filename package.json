@@ -18,5 +18,12 @@
         "lodash": "^4.17.19",
         "postcss": "^8.4.6",
         "tailwindcss": "^3.0.18"
+    },
+    "dependencies": {
+        "bootstrap": "^4.6.0",
+        "datatables.net-bs4": "^1.13.1",
+        "datatables.net-buttons-bs4": "^2.3.3",
+        "jquery": "^3.6.1",
+        "popper.js": "^1.16.1"
     }
 }
