@@ -19,8 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
-        'password',
+        'phone',
+        'user_id'
     ];
 
     /**
@@ -41,4 +43,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected static function booted(){
+        static::created(function($user){
+            ShoppingSession::create([
+                'user_id' => $user->id,
+                'total' => 0,
+            ]);
+        });
+    }
+
+    public function credentials(){
+        return $this->hasOne(Credentials::class, 'user_id');
+    }
+
+    public function cart(){
+        return $this->hasOne(ShoppingSession::class);
+    }
 }
