@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductMedia;
 use App\Models\ProductCategories;
+use Illuminate\Support\Str;
 use DataTables;
 
 class ProductsController extends Controller
@@ -46,6 +47,8 @@ class ProductsController extends Controller
         $categories = ProductCategories::all();
 
         $product->name = $request->input('product-name');
+        $product->slug = Str::slug($product->name);
+        $product->active = (bool) $request->input('product-active');
         $product->description = $request->input('product-description');
         $product->price = $request->input('product-price');
         $product->category_id = $request->input('product-category');
@@ -139,6 +142,8 @@ class ProductsController extends Controller
     public function addProduct(Request $request){
         $product = new Product();
         $product->name = $request->input('product-name');
+        $product->slug = Str::slug($product->name);
+        $product->active = true;
         $product->description = $request->input('product-description');
         $product->price = $request->input('product-price');
         $product->category_id = $request->input('product-category');

@@ -30,6 +30,18 @@
                                         value="{{$product->name}}"
                                     >
                                 </div>
+
+                                <div class="col-span-1">
+                                    <label for="product-active" class="block text-sm font-bold text-gray-700">Active</label>
+                                    <select 
+                                        name="product-active" 
+                                        id="product-active" 
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" 
+                                    >
+                                        <option value="1" {{ ($product->active ) ? 'selected' : '' }}>Active</option>
+                                        <option value="0" {{ (!$product->active) ? 'selected' : '' }} >Inactive</option>
+                                    </select>
+                                </div>
                                 
                                 <div class="col-span-1">
                                     <label for="product-category" class="block text-sm font-bold text-gray-700">Product Category</label>
