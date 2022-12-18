@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATHROOT=/home4/kharygoart/
+    - export DEPLOYPATHPUBLIC = /home4/kharygoart/public_html
+    - /bin/cp * $DEPLOYPATH
+    - /bin/mv -r /home4/kharygoart/public/* $DEPLOYPATHPUBLIC
